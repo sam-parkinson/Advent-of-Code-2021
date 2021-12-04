@@ -71,7 +71,6 @@ public class SonarSweep
         return increases;
     }
     
-    // Note: could just compare i with i + 3?
     private int findWindowIncreases()
     {
         int windowIncreases = 0;
