@@ -1,5 +1,5 @@
 import java.io.File;
-import java.io.FileNotFoundException;
+// import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -30,7 +30,7 @@ public class SonarSweep
     // Method that turns text input into array
     private int[] makeMeasurements(String address)
     {  
-        ArrayList<Integer> measureList = new ArrayList();
+        ArrayList<Integer> measureList = new ArrayList<Integer>();
         try
         {
             File file = new File(address);
