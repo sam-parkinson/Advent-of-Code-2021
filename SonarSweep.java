@@ -1,5 +1,4 @@
 import java.io.File;
-// import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -49,7 +48,7 @@ public class SonarSweep
             System.out.println(e);
         }
 
-        int[] measurements = new int[measureList.toArray().length];
+        int[] measurements = new int[measureList.size()];
 
         for (int i = 0; i < measurements.length; i++)
         {
