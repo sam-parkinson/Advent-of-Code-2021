@@ -6,6 +6,8 @@ public class BinaryDiagnostic
 {
     private int gamma;
     private int epsilon;
+    private int oxygen;
+    private int carbonDioxide;
     private int[][] readings;
     private int[] commonBits;
     private int[] rareBits;
@@ -17,9 +19,8 @@ public class BinaryDiagnostic
         this.rareBits = findRareBits(readings);
         this.gamma = findGamma();
         this.epsilon = findEpsilon();
-        // for oxygen and co2 readings create copy of readings array in each method before reducing
-        // reduce using common and rare bits respectively
-        // do not need entire common bits function, just similar method for each helper
+        this.oxygen = findOxygen();
+        this.carbonDioxide = findCarbonDioxide();
     }
 
     public int getGamma()
@@ -32,6 +33,16 @@ public class BinaryDiagnostic
         return this.epsilon;
     }
 
+    public int getOxygen()
+    {
+        return this.oxygen;
+    }
+
+    public int getCarbonDioxide()
+    {
+        return this.carbonDioxide;
+    }
+
     private int[][] makeReadings(String address)
     {
         ArrayList<String> lines = new ArrayList<String>();
@@ -39,8 +50,7 @@ public class BinaryDiagnostic
             File file = new File(address);
             Scanner stdin = new Scanner(file);
 
-            while (stdin.hasNext())
-            {
+            while (stdin.hasNext()) {
                 lines.add(stdin.nextLine());
             }
 
@@ -52,12 +62,10 @@ public class BinaryDiagnostic
 
         int[][] readings = new int[lines.size()][lines.get(0).length()];
 
-        for (int i = 0; i < readings.length; i++)
-        {
+        for (int i = 0; i < readings.length; i++) {
             String[] line = lines.get(i).split("");
 
-            for (int j = 0; j < line.length; j++)
-            {
+            for (int j = 0; j < line.length; j++) {
                 readings[i][j] = Integer.parseInt(line[j]);
             }
         }
@@ -70,41 +78,51 @@ public class BinaryDiagnostic
         int[] commonBits = new int[arr[0].length];
 
         for (int i = 0; i < commonBits.length; i++) {
-            int ones = 0;
-            int zeros = 0;
-
-            for (int j = 0; j < arr.length; j++)
-            {
-                if (arr[j][i] == 1)
-                    ones++;
-                else
-                    zeros++;
-            }
-
-            commonBits[i] = ones >= zeros ? 1 : 0;
+            commonBits[i] = findSingleCommonBit(i, arr);
         }
 
         return commonBits;
     }
 
-    private int[] findRareBits(int[][] arr) {
+    private int findSingleCommonBit(int i, int[][] arr)
+    {
+        int ones = 0;
+        int zeros = 0;
+
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j][i] == 1)
+                ones++;
+            else
+                zeros++;
+        }
+
+        return ones >= zeros ? 1 : 0;
+    }
+
+    private int[] findRareBits(int[][] arr) 
+    {
         int[] rareBits = new int[arr[0].length];
+
         for (int i = 0; i < rareBits.length; i++) {
-            int ones = 0;
-            int zeros = 0;
-
-            for (int j = 0; j < arr.length; j++)
-            {
-                if (arr[j][i] == 1)
-                    ones++;
-                else
-                    zeros++;
-            }
-
-            rareBits[i] = ones < zeros ? 1 : 0;
+            rareBits[i] = findSingleRareBit(i, arr);
         }
 
         return rareBits;
+    }
+
+    private int findSingleRareBit(int i, int[][] arr)
+    {
+        int ones = 0;
+        int zeros = 0;
+
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j][i] == 1)
+                ones++;
+            else
+                zeros++;
+        }
+
+        return ones < zeros ? 1 : 0;
     }
 
     private int findGamma()
@@ -132,8 +150,83 @@ public class BinaryDiagnostic
     private int findOxygen()
     {
         int[][] oxyCopy = copyReadings();
+        int i = 0;
 
-        return 0;
+        while (oxyCopy.length > 1) {
+            int bit = findSingleCommonBit(i, oxyCopy);
+            int tracker = 0;
+
+            for (int j = 0; j < oxyCopy.length; j++) {
+                if (oxyCopy[j][i] == bit)
+                    tracker++;
+            }
+
+            int[][] paredOxyCopy = new int[tracker][readings[0].length];
+
+            int oldPos = 0;
+            int newPos = 0;
+
+            while (newPos < tracker) {
+                if (oxyCopy[oldPos][i] == bit) {
+                    for (int j = 0; j < readings[0].length; j++) {
+                        paredOxyCopy[newPos][j] = oxyCopy[oldPos][j];
+                    }
+                    newPos++;
+                }
+                oldPos++;
+            }
+            oxyCopy = paredOxyCopy;
+            i++;
+        }
+
+        String oxyStr = "";
+
+        for (int j = 0; j < oxyCopy[0].length; j++) {
+            oxyStr += oxyCopy[0][j];
+        }
+
+        return Integer.parseInt(oxyStr, 2);
+    }
+
+    private int findCarbonDioxide()
+    {
+        int[][] cooCopy = copyReadings();
+        int i = 0;
+
+        while (cooCopy.length > 1) {
+            int bit = findSingleRareBit(i, cooCopy);
+            int tracker = 0;
+
+            for (int j = 0; j < cooCopy.length; j++) {
+                if (cooCopy[j][i] == bit)
+                    tracker++;
+            }
+
+            int[][] paredCooCopy = new int[tracker][readings[0].length];
+
+            int oldPos = 0;
+            int newPos = 0;
+
+            while (newPos < tracker) {
+                if (cooCopy[oldPos][i] == bit) {
+                    for (int j = 0; j < readings[0].length; j++) {
+                        paredCooCopy[newPos][j] = cooCopy[oldPos][j];
+                    }
+                    newPos++;
+                }
+                oldPos++;
+            }
+            cooCopy = paredCooCopy;
+            i++;
+        }
+
+        String cooStr = "";
+
+        for (int j = 0; j < cooCopy[0].length; j++) {
+            cooStr += cooCopy[0][j];
+        }
+
+        return Integer.parseInt(cooStr, 2);
     }
 
     private int[][] copyReadings()

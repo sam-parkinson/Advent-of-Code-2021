@@ -17,5 +17,6 @@ public class Driver
 
         System.out.println();
         System.out.println("Day 3 Problem 1: " + (diagnostic.getGamma() * diagnostic.getEpsilon()));
+        System.out.println("Day 3 Problem 2: " + (diagnostic.getOxygen() * diagnostic.getCarbonDioxide()));
     }
 }
