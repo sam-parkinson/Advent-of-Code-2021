@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 public class Submarine
 {
     // This probably isn't strictly necessary, input shouldn't be malicious
