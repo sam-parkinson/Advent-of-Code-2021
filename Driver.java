@@ -5,6 +5,7 @@ public class Driver
         SonarSweep sweeper = new SonarSweep("inputs/day1.txt");
         Submarine submarine = new Submarine("inputs/day2.txt");
         BinaryDiagnostic diagnostic = new BinaryDiagnostic("inputs/day3.txt");
+        BingoGame bingoGame = new BingoGame("inputs/day4.txt");
         
         System.out.println("Day 1 Problem 1: " + sweeper.getIncreases());
         System.out.println("Day 1 Problem 2: " + sweeper.getWindowIncreases());
