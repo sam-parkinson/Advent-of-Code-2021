@@ -43,11 +43,9 @@ public class BingoGame
 
                 else {
                     String[] lineSplit = line.trim().split("\\D+");
-                    // System.out.println(lineSplit);
                     int[] cardLine = new int[lineSplit.length];
                     for (int i = 0; i < cardLine.length; i++) {
-                        // if (lineSplit[i].compareTo("") != 0)
-                            cardLine[i] = Integer.parseInt(lineSplit[i]);
+                        cardLine[i] = Integer.parseInt(lineSplit[i]);
                     }
                     cardAL.add(cardLine);
                 }                    

@@ -7,6 +7,7 @@ public class Driver
         BinaryDiagnostic diagnostic = new BinaryDiagnostic("inputs/day3.txt");
         BingoGame bingoGameOne = new BingoGame("inputs/day4.txt");
         BingoGame bingoGameTwo = new BingoGame("inputs/day4.txt");
+        VentMapper ventMapper = new VentMapper("inputs/day5.txt");
         
         System.out.println("Day 1 Problem 1: " + sweeper.getIncreases());
         System.out.println("Day 1 Problem 2: " + sweeper.getWindowIncreases());
@@ -36,5 +37,9 @@ public class Driver
         }
         System.out.println("Day 4 Problem 1: " + (score1 * bingoGameOne.getLastNumberCalled()));
         System.out.println("Day 4 Problem 2: " + (score2 * bingoGameTwo.getLastNumberCalled()));
+
+        System.out.println();
+        System.out.println("Day 5 Problem 1: " + ventMapper.straightLineDangers(2));
+        System.out.println("Day 5 Problem 2: " + ventMapper.fullDangers(2));
     }
 }
