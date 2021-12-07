@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class BingoCard
 {
     private class BingoSquare
@@ -57,6 +59,31 @@ public class BingoCard
             }
         }
         this.isWinner = false;
+        // System.out.println(squares[0][0].number);
+    }
+
+    public int[] getUnstampedSquares()
+    {
+        
+        ArrayList<Integer> unstampedAL = new ArrayList<Integer>();
+
+        for (int i = 0; i < squares.length; i++) {
+            for (int j = 0; j < squares[0].length; j++) {
+                if (!squares[i][j].stamped)
+                    unstampedAL.add(squares[i][j].number);
+            }
+        }
+
+        int[] unstamped = new int[unstampedAL.size()];
+        for (int i = 0; i < unstamped.length; i++)
+            unstamped[i] = unstampedAL.get(i);
+
+        return unstamped;
+    }
+
+    public boolean getWinner()
+    {
+        return this.isWinner;
     }
 
     public void stampCard(int number)
@@ -76,16 +103,18 @@ public class BingoCard
         // check horizontals
         for (int i = 0; i < squares.length; i++) {
             int j = 0;
-            while (squares[i][j].stamped == true) {
+            while (j < squares[0].length && squares[i][j].stamped == true) {
                 j++;
             }
             if (j == squares[0].length)
                 return true;
+            
         }
 
+        // check verticals
         for (int j = 0; j < squares[0].length; j++) {
             int i = 0;
-            while (squares[i][j].stamped == true) {
+            while (i < squares.length && squares[i][j].stamped == true) {
                 i++;
             }
             if (i == squares.length)
