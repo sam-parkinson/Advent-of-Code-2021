@@ -10,6 +10,7 @@ public class Driver
         VentMapper ventMapper = new VentMapper("inputs/day5.txt");
         LanternfishSchool fishSchool = new LanternfishSchool("inputs/day6.txt");
         CrabDrill crabDrill = new CrabDrill("inputs/day7.txt");
+        SevenSegmentDisplay display = new SevenSegmentDisplay("inputs/day8.txt");
         
         System.out.println("Day 1 Problem 1: " + sweeper.getIncreases());
         System.out.println("Day 1 Problem 2: " + sweeper.getWindowIncreases());
@@ -53,6 +54,9 @@ public class Driver
         System.out.println();
         System.out.println("Day 7 Problem 1: " + crabDrill.findShortestDistance());
         System.out.println("Day 7 Problem 2: " + crabDrill.findCheapestDistance());
+
+        System.out.println();
+        System.out.println("Day 8 Problem 1: " + display.simpleCounter());
 
     }
 }

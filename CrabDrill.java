@@ -54,7 +54,8 @@ public class CrabDrill {
             sum += crabShips[i];
         }
 
-        int mean = (int) Math.round((double)sum / crabShips.length);
+        // int mean = (int) Math.round((double)sum / crabShips.length);
+        int mean = sum / crabShips.length;
         
         int distance;
         int fuel = 0;
@@ -67,4 +68,3 @@ public class CrabDrill {
         return fuel;
     }
 }
-
