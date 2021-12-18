@@ -1,8 +1,8 @@
 public class Test {
     public static void main(String[] args) {
-        CrabDrill test = new CrabDrill("inputs/test.txt");
+        SevenSegmentDisplay test = new SevenSegmentDisplay("inputs/test.txt");
 
-        System.out.println(test.findShortestDistance());
-        System.out.println(test.findCheapestDistance());
+        System.out.println(test.simpleCounter());
+        System.out.println(test.processSignalStream());
     }
 }

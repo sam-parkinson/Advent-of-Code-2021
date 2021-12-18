@@ -57,6 +57,7 @@ public class Driver
 
         System.out.println();
         System.out.println("Day 8 Problem 1: " + display.simpleCounter());
+        System.out.println("Day 8 Problem 2: " + display.processSignalStream());
 
     }
 }
