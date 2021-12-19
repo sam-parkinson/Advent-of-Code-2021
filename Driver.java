@@ -11,6 +11,7 @@ public class Driver
         LanternfishSchool fishSchool = new LanternfishSchool("inputs/day6.txt");
         CrabDrill crabDrill = new CrabDrill("inputs/day7.txt");
         SevenSegmentDisplay display = new SevenSegmentDisplay("inputs/day8.txt");
+        DepthMap depthMap = new DepthMap("inputs/day9.txt");        
         
         System.out.println("Day 1 Problem 1: " + sweeper.getIncreases());
         System.out.println("Day 1 Problem 2: " + sweeper.getWindowIncreases());
@@ -58,6 +59,9 @@ public class Driver
         System.out.println();
         System.out.println("Day 8 Problem 1: " + display.simpleCounter());
         System.out.println("Day 8 Problem 2: " + display.processSignalStream());
+
+        System.out.println();
+        System.out.println("Day 9 Problem 1: " + depthMap.findTotalDanger());
 
     }
 }

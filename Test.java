@@ -1,8 +1,7 @@
 public class Test {
     public static void main(String[] args) {
-        SevenSegmentDisplay test = new SevenSegmentDisplay("inputs/test.txt");
+        DepthMap test = new DepthMap("inputs/test.txt");
 
-        System.out.println(test.simpleCounter());
-        System.out.println(test.processSignalStream());
+        System.out.println(test.findTotalDanger());
     }
 }
