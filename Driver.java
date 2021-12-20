@@ -62,6 +62,6 @@ public class Driver
 
         System.out.println();
         System.out.println("Day 9 Problem 1: " + depthMap.findTotalDanger());
-
+        System.out.println("Day 9 Problem 2: " + depthMap.findDeepestBasins());
     }
 }

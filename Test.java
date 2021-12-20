@@ -3,5 +3,6 @@ public class Test {
         DepthMap test = new DepthMap("inputs/test.txt");
 
         System.out.println(test.findTotalDanger());
+        System.out.println(test.findDeepestBasins());
     }
 }
