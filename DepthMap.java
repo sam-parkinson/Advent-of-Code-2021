@@ -2,7 +2,6 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.ArrayDeque;
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class DepthMap {
