@@ -1,8 +1,8 @@
 public class Test {
     public static void main(String[] args) {
-        DepthMap test = new DepthMap("inputs/test.txt");
+        SyntaxScorer test = new SyntaxScorer("inputs/test.txt");
 
-        System.out.println(test.findTotalDanger());
-        System.out.println(test.findDeepestBasins());
+        System.out.println(test.getErrorScore());
+        System.out.println(test.getIncompleteScore());
     }
 }

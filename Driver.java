@@ -67,5 +67,6 @@ public class Driver
 
         System.out.println();
         System.out.println("Day 10 Problem 1: " + syntaxScorer.getErrorScore());
+        System.out.println("Day 10 Problem 2: " + syntaxScorer.getIncompleteScore());
     }
 }
