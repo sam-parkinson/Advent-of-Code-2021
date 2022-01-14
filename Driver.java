@@ -12,7 +12,8 @@ public class Driver
         CrabDrill crabDrill = new CrabDrill("inputs/day7.txt");
         SevenSegmentDisplay display = new SevenSegmentDisplay("inputs/day8.txt");
         DepthMap depthMap = new DepthMap("inputs/day9.txt"); 
-        SyntaxScorer syntaxScorer = new SyntaxScorer("inputs/day10.txt");       
+        SyntaxScorer syntaxScorer = new SyntaxScorer("inputs/day10.txt");   
+        OctopusGarden octopusGarden = new OctopusGarden("inputs/day11.txt");    
         
         System.out.println("Day 1 Problem 1: " + sweeper.getIncreases());
         System.out.println("Day 1 Problem 2: " + sweeper.getWindowIncreases());
@@ -68,5 +69,9 @@ public class Driver
         System.out.println();
         System.out.println("Day 10 Problem 1: " + syntaxScorer.getErrorScore());
         System.out.println("Day 10 Problem 2: " + syntaxScorer.getIncompleteScore());
+
+        System.out.println();
+        System.out.println("Day 11 Problem 1: " + octopusGarden.getHundredSteps());
+        System.out.println("Day 11 Problem 2: " + octopusGarden.getSyncSteps());
     }
 }
